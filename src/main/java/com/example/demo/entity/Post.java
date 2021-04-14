@@ -9,8 +9,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Data
 @Entity
+@Data
 public class Post {
 
     @Id
@@ -31,9 +31,12 @@ public class Post {
     @Column(updatable = false)
     private LocalDateTime createdDate;
 
-    @PrePersist
-    protected void onCreate() {
-        this.createdDate = LocalDateTime.now();
+    public Post() {
     }
 
+    @PrePersist
+    protected void onCreate()
+    {
+        this.createdDate = LocalDateTime.now();
+    }
 }

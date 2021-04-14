@@ -1,9 +1,10 @@
 package com.example.demo.web;
 
-import com.example.demo.payload.request.LoginRequest;
-import com.example.demo.payload.request.SignupRequest;
+
 import com.example.demo.payload.response.JWTTokenSuccessResponse;
 import com.example.demo.payload.response.messageResponse;
+import com.example.demo.payload.request.LoginRequest;
+import com.example.demo.payload.request.SignupRequest;
 import com.example.demo.security.JWTTokenProvider;
 import com.example.demo.security.SecurityConstants;
 import com.example.demo.services.UserService;
@@ -48,8 +49,10 @@ public class AuthController {
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = SecurityConstants.TOKEN_PREFIX + jwtTokenProvider.generateToken(authentication);
+
         return ResponseEntity.ok(new JWTTokenSuccessResponse(true, jwt));
     }
+
 
     @PostMapping("/signup")
     public ResponseEntity<Object> registerUser(@Valid @RequestBody SignupRequest signupRequest, BindingResult bindingResult) {
@@ -57,6 +60,7 @@ public class AuthController {
         if (!ObjectUtils.isEmpty(errors)) return errors;
 
         userService.createUser(signupRequest);
-        return ResponseEntity.ok(new messageResponse("User registered successfully "));
+        return ResponseEntity.ok(new messageResponse("User registered successfully!"));
     }
+
 }

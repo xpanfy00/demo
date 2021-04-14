@@ -1,6 +1,5 @@
 package com.example.demo.security;
 
-
 import com.example.demo.entity.User;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
@@ -17,7 +16,6 @@ public class JWTTokenProvider {
     public static final Logger LOG = LoggerFactory.getLogger(JWTTokenProvider.class);
 
     public String generateToken(Authentication authentication) {
-
         User user = (User) authentication.getPrincipal();
         Date now = new Date(System.currentTimeMillis());
         Date expiryDate = new Date(now.getTime() + SecurityConstants.EXPIRATION_TIME);
@@ -25,8 +23,7 @@ public class JWTTokenProvider {
         String userId = Long.toString(user.getId());
 
         Map<String, Object> claimsMap = new HashMap<>();
-
-        claimsMap.put("id" , userId);
+        claimsMap.put("id", userId);
         claimsMap.put("username", user.getEmail());
         claimsMap.put("firstname", user.getName());
         claimsMap.put("lastname", user.getLastname());
@@ -49,7 +46,7 @@ public class JWTTokenProvider {
             return true;
         }catch (SignatureException |
                 MalformedJwtException |
-                ExpiredJwtException|
+                ExpiredJwtException |
                 UnsupportedJwtException |
                 IllegalArgumentException ex) {
             LOG.error(ex.getMessage());
@@ -64,6 +61,6 @@ public class JWTTokenProvider {
                 .getBody();
         String id = (String) claims.get("id");
         return Long.parseLong(id);
-
     }
+
 }

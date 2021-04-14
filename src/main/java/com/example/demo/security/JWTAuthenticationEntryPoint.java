@@ -2,7 +2,6 @@ package com.example.demo.security;
 
 import com.example.demo.payload.response.InvalidLoginResponse;
 import com.google.gson.Gson;
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

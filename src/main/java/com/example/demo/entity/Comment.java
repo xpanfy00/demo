@@ -5,8 +5,8 @@ import lombok.Data;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Data
 @Entity
+@Data
 public class Comment {
 
     @Id
@@ -23,9 +23,12 @@ public class Comment {
     @Column(updatable = false)
     private LocalDateTime createdDate;
 
-    @PrePersist
-    protected void onCreate() {
-        this.createdDate = LocalDateTime.now();
+    public Comment() {
     }
 
+    @PrePersist
+    protected void onCreate()
+    {
+        this.createdDate = LocalDateTime.now();
+    }
 }

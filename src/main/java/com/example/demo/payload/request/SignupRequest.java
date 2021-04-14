@@ -23,9 +23,10 @@ public class SignupRequest {
     private String lastname;
     @NotEmpty(message = "Please enter your username")
     private String username;
-    @NotEmpty(message = "password is required")
+    @NotEmpty(message = "Password is required")
     @Size(min = 6)
     private String password;
     private String confirmPassword;
+
 
 }

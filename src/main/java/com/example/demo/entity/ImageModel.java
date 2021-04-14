@@ -5,8 +5,8 @@ import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 
-@Data
 @Entity
+@Data
 public class ImageModel {
 
     @Id
@@ -20,6 +20,8 @@ public class ImageModel {
     @JsonIgnore
     private Long userId;
     @JsonIgnore
-    private Long PostId;
+    private Long postId;
 
+    public ImageModel() {
+    }
 }

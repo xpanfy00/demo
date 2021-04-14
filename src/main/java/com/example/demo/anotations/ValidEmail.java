@@ -1,7 +1,5 @@
 package com.example.demo.anotations;
 
-
-
 import com.example.demo.validations.EmailValidator;
 
 import javax.validation.Constraint;
@@ -13,10 +11,11 @@ import java.lang.annotation.*;
 @Constraint(validatedBy = EmailValidator.class)
 @Documented
 public @interface ValidEmail {
-
     String message() default "Invalid Email";
 
-    Class<?>[] groups() default {};
+    Class<?>[] groups() default{};
 
     Class<? extends Payload>[] payload() default {};
- }
+
+}
+
